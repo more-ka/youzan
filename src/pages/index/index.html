@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="dns-prefetch" href="https://dn-kdt-img.qbox.me/">
+  <link rel="dns-prefetch" href="http://dummyimage.com">
   <link rel="dns-prefetch" href="https://img.yzcdn.cn/">
   <link rel="dns-prefetch" href="https://b.yzcdn.cn/">
   <link rel="dns-prefetch" href="https://su.yzcdn.cn/">
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <a href="https://maijia.youzan.com/mars/notice/detail?id=" class="notice"></a>
+      <!--<a href="https://maijia.youzan.com/mars/notice/detail?id=" class="notice"></a>-->
       <div class="section-title">优店推荐</div>
       <div class="section-content shops">
         <div class="shop-wrap">
@@ -77,7 +77,10 @@
         </div>
       </div>
       <div class="hot-goods js-waterfull-wrap" data-src="">
-        <ul class="js-list js-lazy" data-src="">
+        <ul class="js-list js-lazy" data-src=""
+            v-infinite-scroll="getData"
+            infinite-scroll-disabled="loading"
+            infinite-scroll-distance="30">
           <li v-for="list in lists" id="list.id">
             <div class="goods-item">
               <a

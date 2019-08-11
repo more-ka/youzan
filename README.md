@@ -1,4 +1,4 @@
-# youzan
+# Vue重构有赞商城
 
 > A Vue.js project
 

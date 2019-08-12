@@ -1,5 +1,6 @@
 let url = {
   homepage: '/index/hotList',
+  banner: '/index/banner'
 }
 // 开发环境和真实环境的切换
 // let host = ''

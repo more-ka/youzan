@@ -3,8 +3,8 @@ import './index.css'
 import Vue from  'vue'
 import axios from 'axios'
 import url from 'js/api.js'
-import { InfiniteScroll } from 'mint-ui';
-
+import { InfiniteScroll } from 'mint-ui'
+import Foot from 'components/Foot.vue'
 Vue.use(InfiniteScroll);
 let app = new Vue({
   el: '#app',
@@ -39,5 +39,8 @@ let app = new Vue({
   },
   beforeMount(){
     this.getData()
+  },
+  components:{
+    Foot
   }
 })

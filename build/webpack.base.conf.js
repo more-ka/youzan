@@ -15,6 +15,7 @@ module.exports = {
   entry: {
     app: './src/pages/index/index.js',
     cart: './src/pages/cart/cart.js',
+    category: './src/pages/category/category.js'
   },
   output: {
     path: config.build.assetsRoot,

@@ -64,6 +64,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       inject: true,
       chunks: ['cart']
     }),
+    new HtmlWebpackPlugin({
+      filename: 'category.html',
+      template: './src/pages/category/category.html',
+      inject: true,
+      chunks: ['category']
+    }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {

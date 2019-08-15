@@ -25,7 +25,7 @@
 
 <body class=" " style="">
 <div id="app">
-  <div class="container with-bottom-nav" style="min-height: 667px; height: 667px;">
+  <div class="container with-bottom-nav" style="min-height: 667px;  height:calc(100vh - 50px)">
     <div class="custom-search js-search-bar"  v-if="topList">
       <form>
         <input type="search" class="custom-search-input" autocomplete="off" name="keyword" value="" placeholder="搜索更赞的商品">
@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="search-content" style="display: none;"></div>
-    <div class="content" style="height: 617px;">
+    <div class="content" style="">
       <div class="class-nav">
         <div id="scroll-nav" style="height: 100%;">
           <ul class="nav" id="scroll-nav-content" style="transform: translate3d(0px, 0px, 0px);" v-for="(list,index) in topList">
@@ -73,18 +73,18 @@
                   <a href="https://maijia.youzan.com/mars/rank/hotgoods" class="pull-right icon-right">更多</a>
                 </div>
                 <ul>
-                  <li class="goods-item"  v-for="goodsItem in rankList.hotGoods">
+                  <li class="goods-item"  v-for="list in rankList.hotGoods" @click="toSearch(list)">
                     <a href="">
                       <div class="thumb badge center-img">
-                        <img :src="goodsItem.img">
-                        <span class="num">{{goodsItem.id}}</span>
+                        <img :src="list.img">
+                        <span class="num">{{list.id}}</span>
                       </div>
                       <div class="detail">
-                        <div class="title">{{goodsItem.name}}</div>
-                        <div class="price">￥{{goodsItem.price | formatPrice}}</div>
+                        <div class="title">{{list.name}}</div>
+                        <div class="price">￥{{list.price | formatPrice}}</div>
                         <div class="recommend">
                           <span>推荐值:</span>
-                          <span>{{goodsItem.recommend}}</span>
+                          <span>{{list.recommend}}</span>
                         </div>
                       </div>
                     </a>
@@ -97,7 +97,7 @@
                   <a href="https://maijia.youzan.com/mars/rank/hotshops" class="pull-right icon-right">更多</a>
                 </div>
                 <ul>
-                  <li class="shop-item" v-for="(list,index) in rankList.hotShops">
+                  <li class="shop-item" v-for="(list,index) in rankList.hotShops" @click="toSearch(list)">
                     <div class="shop-title">
                       <span class="badge">{{index+1}}</span>
                       <a :href="list.clickUrl">{{list.name}}</a>{{list.clickUrl}}
@@ -124,7 +124,7 @@
           <div v-if="subList" id="scroll-main-content" class="js-main-content inner-content" style="height: 534px; transform: translate3d(0px, 0px, 0px);" v-show="currentIndex !==800">
             <h3 class="category-title">热门品牌 </h3>
             <ul class="category-content">
-              <li v-for="list in subList.brandList" class="category-item js-category-item" :data-item-id="list.id" :data-item-name="list.name">
+              <li v-for="list in subList.brandList" @click="toSearch(list)" class="category-item js-category-item" :data-item-id="list.id" :data-item-name="list.name">
                 <img :src="list.img" :alt="list.name" class="category-img">
                 <span class="category-item-name">
                 {{list.name}}            </span>
@@ -133,7 +133,7 @@
             </ul>
             <h3 class="category-title"> 热门分类  </h3>
             <ul class="category-content">
-              <li v-for="list in subList.categoryList" class="category-item js-category-item" :data-item-id="list.id" :data-item-name="list.name">
+              <li v-for="list in subList.categoryList" @click="toSearch(list)" class="category-item js-category-item" :data-item-id="list.id" :data-item-name="list.name">
                 <img :src="list.img" :alt="list.name" class="category-img">
                 <span class="category-item-name">
                 {{list.name}}            </span>

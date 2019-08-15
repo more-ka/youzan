@@ -70,6 +70,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       inject: true,
       chunks: ['category']
     }),
+    new HtmlWebpackPlugin({
+      filename: 'search.html',
+      template: './src/pages/search/search.html',
+      inject: true,
+      chunks: ['search']
+    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'user.html',
+    //   template: './src/pages/user/user.html',
+    //   inject: true,
+    //   chunks: ['user']
+    // }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {

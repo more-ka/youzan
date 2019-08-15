@@ -40,6 +40,9 @@ let app = new Vue({
           .catch();
       }
     },
+    toSearch(list){
+      location.href = `search.html?keyword=${list.name}&id=${list.id}`
+    }
   },
   beforeMount(){
     this.getTopList()

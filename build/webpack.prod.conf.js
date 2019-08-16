@@ -120,6 +120,21 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
       excludeChunks: ['search']
     }),
+    new HtmlWebpackPlugin({
+      filename: config.build.index,
+      template: './src/pages/goods/goods.html',
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency'
+      excludeChunks: ['goods']
+    }),
     // new HtmlWebpackPlugin({
     //   filename: config.build.index,
     //   template: './src/pages/user/user.html',

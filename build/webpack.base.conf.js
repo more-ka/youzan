@@ -17,6 +17,8 @@ module.exports = {
     cart: './src/pages/cart/cart.js',
     category: './src/pages/category/category.js',
     search: './src/pages/search/search.js',
+    goods: './src/pages/goods/goods.js',
+
     // user: './src/pages/user/user.js'
   },
   output: {

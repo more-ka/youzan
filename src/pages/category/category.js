@@ -2,8 +2,8 @@ import './category.css'
 import 'css/common.css'
 import Vue from 'vue'
 import url from 'js/api.js'
-import Foot from 'components/Foot.vue'
 import axios from 'axios'
+import mixin from 'js/mixin.js'
 
 let app = new Vue({
   el: '#app',
@@ -12,9 +12,6 @@ let app = new Vue({
     currentIndex: 800,
     rankList:null,
     subList: null
-  },
-  components:{
-    Foot
   },
   methods:{
     getTopList(){
@@ -48,22 +45,5 @@ let app = new Vue({
     this.getTopList()
     this.getSubList(800)
   },
-  filters:{
-    formatPrice(price){
-      let i = new RegExp(/[\.]/)
-      if(i.test(price)){
-        let str = price+""
-        let integer = str.split(".")[0]
-        let decimal = str.split(".")[1]
-        if(decimal.length === 2){
-          return integer+"."+decimal
-        }else if(decimal.length === 1){
-          return integer + "."+decimal +'0'
-        }
-
-      }else{
-        return price+'.00'
-      }
-    }
-  }
+  mixins: [mixin]
 })

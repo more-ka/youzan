@@ -76,6 +76,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       inject: true,
       chunks: ['search']
     }),
+    new HtmlWebpackPlugin({
+      filename: 'goods.html',
+      template: './src/pages/goods/goods.html',
+      inject: true,
+      chunks: ['goods']
+    }),
     // new HtmlWebpackPlugin({
     //   filename: 'user.html',
     //   template: './src/pages/user/user.html',

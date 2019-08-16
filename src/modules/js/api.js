@@ -6,7 +6,8 @@ let url = {
   subList: '/category/subList',
   search: '/search/list',
   details: '/goods/details',
-  deal: '/goods/deal'
+  deal: '/goods/deal',
+  addCart: '/cart/add'
 }
 // 开发环境和真实环境的切换
 // let host = ''

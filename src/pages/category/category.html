@@ -19,12 +19,15 @@
   <link rel="shortcut icon" href="https://b.yzcdn.cn/v2/image/yz_fc.ico">
   <title>分类</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <!--<link rel="stylesheet" href="./css/common.css">-->
-  <!--<link rel="stylesheet" href="./css/category.css">-->
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
 </head>
 
 <body class=" " style="">
-<div id="app">
+<div id="app" v-cloak>
   <div class="container with-bottom-nav" style="min-height: 667px;  height:calc(100vh - 50px)">
     <div class="custom-search js-search-bar"  v-if="topList">
       <form>

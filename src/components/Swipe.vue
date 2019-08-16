@@ -26,7 +26,6 @@
     mounted(){
         new Swiper('.swiper-container',{
           autoplay:true,
-          effect : 'fade',
           loop: true,
           pagination: {
             el: '.swiper-pagination',

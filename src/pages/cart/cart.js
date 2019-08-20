@@ -41,6 +41,9 @@ new Vue({
       shop.goodsList.forEach(good => {
         good.checked = shop.checked
       })
+    },
+    selectAll(){
+      this.allSelected = !this.allSelected
     }
   },
   computed: {
@@ -54,7 +57,12 @@ new Vue({
         return false
       },
       set(value) {
-
+        this.cartList.forEach(shop=>{
+          shop.checked = value
+          shop.goodsList.forEach(good=>{
+            good.checked = value
+          })
+        })
       }
     }
   },

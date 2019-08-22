@@ -11,7 +11,8 @@ import url from 'js/api.js'
 new Vue({
   el: '.container',
   data: {
-    cartList: null
+    cartList: null,
+    total: 0
   },
   methods: {
     getCartList() {
@@ -42,7 +43,7 @@ new Vue({
         good.checked = shop.checked
       })
     },
-    selectAll(){
+    selectAll() {
       this.allSelected = !this.allSelected
     }
   },
@@ -57,12 +58,30 @@ new Vue({
         return false
       },
       set(value) {
-        this.cartList.forEach(shop=>{
+        this.cartList.forEach(shop => {
           shop.checked = value
-          shop.goodsList.forEach(good=>{
+          shop.goodsList.forEach(good => {
             good.checked = value
           })
         })
+      }
+    },
+    getSelectList(){
+      let arr = []
+      let total = 0
+      if (this.cartList && this.cartList.length) {
+        this.cartList.forEach(shop => {
+          shop.goodsList.forEach(good => {
+            if (good.checked) {
+              arr.push(good)
+              total += good.price * good.number
+            }
+          })
+        })
+        this.total = total
+        return arr
+      } else {
+        return []
       }
     }
   },

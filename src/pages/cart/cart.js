@@ -12,7 +12,9 @@ new Vue({
   el: '.container',
   data: {
     cartList: null,
-    total: 0
+    total: 0,
+    editingShop: null,
+    editingShopIndex: -1
   },
   methods: {
     getCartList() {
@@ -21,6 +23,8 @@ new Vue({
           let list = response.data.cartList
           list.forEach(shop => {
             shop.checked = true
+            shop.editing = false
+            shop.editingMsg = '编辑'
             shop.goodsList.forEach(good => {
               good.checked = true
             })
@@ -45,6 +49,22 @@ new Vue({
     },
     selectAll() {
       this.allSelected = !this.allSelected
+    },
+    edit(shop, shopIndex) {
+      shop.editing = !shop.editing
+      shop.editingMsg = shop.editing ? '完成' : '编辑'
+      this.cartList.forEach((item, i) => {
+        if (i !== shopIndex) {
+          item.editing = false
+          item.editingMsg = shop.editing ? '' : '编辑'
+        }
+      })
+      this.editingShop = shop.editing ? shop : null
+      this.editingShopIndex = shop.editing ? shopIndex : -1
+    },
+    changeNum(good,num) {
+      if(good.number===1)return
+      good.number += num
     }
   },
   computed: {
@@ -56,7 +76,8 @@ new Vue({
           })
         }
         return false
-      },
+      }
+      ,
       set(value) {
         this.cartList.forEach(shop => {
           shop.checked = value
@@ -65,8 +86,9 @@ new Vue({
           })
         })
       }
-    },
-    getSelectList(){
+    }
+    ,
+    getSelectList() {
       let arr = []
       let total = 0
       if (this.cartList && this.cartList.length) {
@@ -84,10 +106,12 @@ new Vue({
         return []
       }
     }
-  },
+  }
+  ,
   beforeMount() {
     this.getCartList()
-  },
+  }
+  ,
 
   mixins: [mixin]
 })

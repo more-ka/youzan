@@ -14,7 +14,10 @@ new Vue({
     cartList: null,
     total: 0,
     editingShop: null,
-    editingShopIndex: -1
+    editingShopIndex: -1,
+    removePopup: false,
+    removeData: null,
+    removeMsg: ''
   },
   methods: {
     getCartList() {
@@ -67,9 +70,57 @@ new Vue({
       this.editingShop = shop.editing ? shop : null
       this.editingShopIndex = shop.editing ? shopIndex : -1
     },
-    changeNum(good, num) {
-      if (good.number === 1) return
-      good.number += num
+    add(good) {
+      axios.post(url.cartAdd, {
+        id: good.id,
+        number: 1
+      })
+        .then(response => {
+          good.number += 1
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
+    reduce(good) {
+      if(good.number ===1)return
+      axios.post(url.cartReduce, {
+        id: good.id,
+        number: 1
+      }).then(response => {
+        good.number -= 1
+      }).catch(error=>{
+        console.log(error);
+      })
+    },
+    remove(shop,shopIndex,good,goodIndex){
+      this.removeMsg = '确定删除该商品么？'
+      this.removePopup = true
+      this.removeData = {shop,shopIndex,good,goodIndex}
+    },
+    removeList(){
+      console.log(this.getRemoveList);
+    },
+    removeConfirm(){
+      let {shop,shopIndex,good,goodIndex} = this.removeData
+      axios.post(url.cartRemove,{
+        id: good.id
+      }).then(response=>{
+        shop.goodsList.splice(goodIndex,1)
+        if(!shop.goodsList.length){
+          this.cartList.splice(shopIndex,1)
+          this.removeShop()
+        }
+        this.removePopup = false
+      })
+    },
+    removeShop(){
+      this.editingShop = null
+      this.editingShopIndex = -1
+      this.cartList.forEach(shop=>{
+        shop.editing = false
+        shop.editingMsg = '编辑'
+      })
     }
   },
   computed: {
@@ -134,7 +185,16 @@ new Vue({
       }
     },
     getRemoveList() {
-
+      if (this.editingShop) {
+        let arr = []
+        this.editingShop.goodsList.forEach(good => {
+          if (good.removeChecked) {
+            arr.push(good)
+          }
+        })
+        return arr
+      }
+      return []
     }
   }
   ,

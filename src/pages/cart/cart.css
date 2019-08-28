@@ -1709,3 +1709,70 @@ only screen and (min-device-pixel-ratio: 1.5) {
   top: initial;
   bottom: 0px
 }
+.van-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  width: 85%;
+  font-size: 16px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  border-radius: 4px;
+  background-color: #fff;
+  -webkit-transform: translate3d(-50%,-50%,0);
+  transform: translate3d(-50%,-50%,0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.van-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.7);
+}
+.van-dialog__message {
+  padding: 25px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-height: 60vh;
+  overflow-y: auto;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre-wrap;
+}
+.van-button:before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: inherit;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.van-button {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  width: 49%;
+  height: 44px;
+  line-height: 42px;
+  font-size: 16px;
+  border-radius: 2px;
+  text-align: center;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background: white;
+  -webkit-appearance: none;
+  -webkit-text-size-adjust: 100%;
+}
+.van-button__text.active{
+  color: #1989fa;;
+}

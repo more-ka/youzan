@@ -17,7 +17,9 @@ new Vue({
     editingShopIndex: -1,
     removePopup: false,
     removeData: null,
-    removeMsg: ''
+    removeMsg: '',
+    ids: null,
+    clear: false
   },
   methods: {
     getCartList() {
@@ -83,41 +85,57 @@ new Vue({
         })
     },
     reduce(good) {
-      if(good.number ===1)return
+      if (good.number === 1) return
       axios.post(url.cartReduce, {
         id: good.id,
         number: 1
       }).then(response => {
         good.number -= 1
-      }).catch(error=>{
+      }).catch(error => {
         console.log(error);
       })
     },
-    remove(shop,shopIndex,good,goodIndex){
+    remove(shop, shopIndex, good, goodIndex) {
       this.removeMsg = '确定删除该商品么？'
       this.removePopup = true
-      this.removeData = {shop,shopIndex,good,goodIndex}
+      this.removeData = {shop, shopIndex, good, goodIndex}
     },
-    removeList(){
-      console.log(this.getRemoveList);
+    removeList() {
+      for (let i = 0; i < this.ids.length; i++) {
+        this.cartList.forEach((shop,shopIndex) => {
+        let template = shop
+        shop.goodsList.forEach((good,index) => {
+            if (this.ids[i] === good.id) {
+              shop.goodsList.splice(index, 1)
+            }
+          if (!shop.goodsList.length) {
+            this.cartList.splice(shopIndex, 1)
+          }
+        })
+          if (!this.cartList.length) {
+            this.total = 0
+            this.clear = true
+          }
+      })
+      }
     },
-    removeConfirm(){
-      let {shop,shopIndex,good,goodIndex} = this.removeData
-      axios.post(url.cartRemove,{
+    removeConfirm() {
+      let {shop, shopIndex, good, goodIndex} = this.removeData
+      axios.post(url.cartRemove, {
         id: good.id
-      }).then(response=>{
-        shop.goodsList.splice(goodIndex,1)
-        if(!shop.goodsList.length){
-          this.cartList.splice(shopIndex,1)
+      }).then(response => {
+        shop.goodsList.splice(goodIndex, 1)
+        if (!shop.goodsList.length) {
+          this.cartList.splice(shopIndex, 1)
           this.removeShop()
         }
         this.removePopup = false
       })
     },
-    removeShop(){
+    removeShop() {
       this.editingShop = null
       this.editingShopIndex = -1
-      this.cartList.forEach(shop=>{
+      this.cartList.forEach(shop => {
         shop.editing = false
         shop.editingMsg = '编辑'
       })
@@ -187,10 +205,17 @@ new Vue({
     getRemoveList() {
       if (this.editingShop) {
         let arr = []
-        this.editingShop.goodsList.forEach(good => {
-          if (good.removeChecked) {
-            arr.push(good)
-          }
+        this.cartList.forEach(shop => {
+          shop.goodsList.forEach(good => {
+            if (good.removeChecked) {
+              arr.push(good)
+            }
+          })
+        })
+        let ids = []
+        arr.forEach(good => {
+          ids.push(good.id)
+          this.ids = ids
         })
         return arr
       }

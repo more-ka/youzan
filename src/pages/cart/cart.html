@@ -28,9 +28,13 @@
   <div class="content clearfix js-page-content">
     <div id="cart-container">
       <div>
-        <!---->
-        <!---->
-        <!---->
+        <div class="empty-list" v-show="clear">
+          <h2>购物车快饿瘪了T.T</h2>
+          <div class="desc">
+            快给我挑点宝贝
+          </div>
+          <div style="border:1px solid #f60;" class="go-homepage-btn"><a style="color: #f60;" href="index.html">去逛逛</a></div>
+        </div>
         <div class="js-shop-list shop-list" v-for="(shop,shopIndex) in cartList" v-if="cartList">
           <div class="block block-order block-cart">
             <div class="header">
@@ -131,7 +135,8 @@
     </div>
     <!--删除确认弹框-->
     <div class="van-hairline--top van-dialog__footer van-dialog__footer--buttons">
-      <button @click="removePopup=false" class="van-button van-button--default van-button--large van-dialog__cancel"><span
+      <button @click="removePopup=false"
+              class="van-button van-button--default van-button--large van-dialog__cancel"><span
         class="van-button__text">取消</span></button>
       <button @click="removeConfirm"
               class="van-button van-button--default van-button--large van-dialog__confirm van-hairline--left"><span

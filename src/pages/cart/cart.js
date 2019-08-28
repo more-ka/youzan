@@ -19,7 +19,8 @@ new Vue({
     removeData: null,
     removeMsg: '',
     ids: null,
-    clear: false
+    clear: false,
+    flag: false
   },
   methods: {
     getCartList() {
@@ -101,36 +102,54 @@ new Vue({
       this.removeData = {shop, shopIndex, good, goodIndex}
     },
     removeList() {
-      for (let i = 0; i < this.ids.length; i++) {
-        this.cartList.forEach((shop,shopIndex) => {
-        let template = shop
-        shop.goodsList.forEach((good,index) => {
-            if (this.ids[i] === good.id) {
-              shop.goodsList.splice(index, 1)
+      let ids = this.ids
+      axios.post(url.cartRemove, {
+        ids
+      }).then(response=>{
+        for (let i = 0; i < this.ids.length; i++) {
+          this.cartList.forEach((shop, shopIndex) => {
+            let template = shop
+            shop.goodsList.forEach((good, index) => {
+              if (this.ids[i] === good.id) {
+                shop.goodsList.splice(index, 1)
+              }
+              if (!shop.goodsList.length) {
+                this.cartList.splice(shopIndex, 1)
+              }
+            })
+            if (!this.cartList.length) {
+              this.total = 0
+              this.clear = true
+            } else {
+              this.removeShop()
             }
-          if (!shop.goodsList.length) {
-            this.cartList.splice(shopIndex, 1)
-          }
-        })
-          if (!this.cartList.length) {
-            this.total = 0
-            this.clear = true
-          }
+          })
+        }
+      }).catch(error => {
+        console.log(error);
       })
-      }
+    },
+    removeMore(){
+      this.removeMsg = `确定删除这${this.ids.length}个么？`
+      this.flag = true
+      this.removePopup = true
     },
     removeConfirm() {
-      let {shop, shopIndex, good, goodIndex} = this.removeData
-      axios.post(url.cartRemove, {
-        id: good.id
-      }).then(response => {
-        shop.goodsList.splice(goodIndex, 1)
-        if (!shop.goodsList.length) {
-          this.cartList.splice(shopIndex, 1)
-          this.removeShop()
-        }
-        this.removePopup = false
-      })
+      this.removePopup = false
+      if(this.flag){
+        this.removeList()
+      }else{
+        let {shop, shopIndex, good, goodIndex} = this.removeData
+        axios.post(url.cartRemove, {
+          id: good.id
+        }).then(response => {
+          shop.goodsList.splice(goodIndex, 1)
+          if (!shop.goodsList.length) {
+            this.cartList.splice(shopIndex, 1)
+            this.removeShop()
+          }
+        })
+      }
     },
     removeShop() {
       this.editingShop = null
@@ -225,8 +244,6 @@ new Vue({
   ,
   beforeMount() {
     this.getCartList()
-  }
-  ,
-
+  },
   mixins: [mixin]
 })

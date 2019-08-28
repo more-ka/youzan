@@ -109,6 +109,7 @@
               </span> 全选
             </div>
             <!-- 显示状态 -->
+
             <div class="total-price" v-show="!editingShop">
               合计：¥<span class="js-total-price" style="color: rgb(255, 102, 0);">{{total | formatPrice}}</span>
               <p class="c-gray-dark">不含运费</p>
@@ -119,7 +120,7 @@
             </button>
             <!-- 编辑状态 -->
             <button v-show="editingShop"
-                    @click="removeList"
+                    @click="removeMore"
                     href="javascript:;" :disabled="!getRemoveList.length"
                     class="j-delete-goods btn font-size-14 btn-red">删除
             </button>

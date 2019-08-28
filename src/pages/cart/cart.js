@@ -96,10 +96,19 @@ new Vue({
         console.log(error);
       })
     },
-    remove(shop, shopIndex, good, goodIndex) {
+    remove(good, goodIndex) {
       this.removeMsg = '确定删除该商品么？'
       this.removePopup = true
-      this.removeData = {shop, shopIndex, good, goodIndex}
+      good.removeChecked = true
+    },
+    removeMore(){
+      this.removeMsg = `确定删除这${this.ids.length}个商品么？`
+      this.flag = true
+      this.removePopup = true
+    },
+    removeConfirm() {
+      this.removePopup = false
+      this.removeList()
     },
     removeList() {
       let ids = this.ids
@@ -128,28 +137,6 @@ new Vue({
       }).catch(error => {
         console.log(error);
       })
-    },
-    removeMore(){
-      this.removeMsg = `确定删除这${this.ids.length}个么？`
-      this.flag = true
-      this.removePopup = true
-    },
-    removeConfirm() {
-      this.removePopup = false
-      if(this.flag){
-        this.removeList()
-      }else{
-        let {shop, shopIndex, good, goodIndex} = this.removeData
-        axios.post(url.cartRemove, {
-          id: good.id
-        }).then(response => {
-          shop.goodsList.splice(goodIndex, 1)
-          if (!shop.goodsList.length) {
-            this.cartList.splice(shopIndex, 1)
-            this.removeShop()
-          }
-        })
-      }
     },
     removeShop() {
       this.editingShop = null

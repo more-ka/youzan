@@ -7,6 +7,8 @@ import mixin from 'js/mixin.js'
 import axios from 'axios'
 import url from 'js/api.js'
 import Velocity from 'velocity-animate'
+import fetch from 'js/fetch.js'
+import cartService from 'js/cartService.js'
 
 new Vue({
   el: '.container',
@@ -74,16 +76,19 @@ new Vue({
       this.editingShopIndex = shop.editing ? shopIndex : -1
     },
     add(good) {
-      axios.post(url.cartAdd, {
-        id: good.id,
-        number: 1
+      // fetch('post',url.cartAdd, {
+      //   id: good.id,
+      //   number: 1
+      // })
+      //   .then(response => {
+      //     good.number += 1
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   })
+      cartService.add('post',good.id).then(response=>{
+        good.number += 1
       })
-        .then(response => {
-          good.number += 1
-        })
-        .catch(error => {
-          console.log(error);
-        })
     },
     reduce(good) {
       if (good.number === 1) return

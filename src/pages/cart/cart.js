@@ -20,8 +20,6 @@ new Vue({
     removeMsg: '',
     ids: null,
     clear: false,
-    flag: false,
-    toLeftEle: ''
   },
   methods: {
     getCartList() {
@@ -77,7 +75,7 @@ new Vue({
     },
     reduce(good) {
       if (good.number === 1) return
-      service.reduce(good.id).then(response=>{
+      service.reduce(good.id).then(response => {
         good.number -= 1
       })
     },
@@ -88,7 +86,6 @@ new Vue({
     },
     removeMore() {
       this.removeMsg = `确定删除这${this.ids.length}个商品么？`
-      this.flag = true
       this.removePopup = true
     },
     removeConfirm() {
@@ -97,7 +94,7 @@ new Vue({
     },
     removeList() {
       let ids = this.ids
-      service.removeList(ids).then(response=>{
+      service.removeList(ids).then(response => {
         for (let i = 0; i < this.ids.length; i++) {
           this.cartList.forEach((shop, shopIndex) => {
             let template = shop
@@ -121,7 +118,6 @@ new Vue({
           })
         }
       })
-      this.toLeft(this.toLeftEle, 0,0)
     },
     removeShop() {
       this.editingShop = null
@@ -148,10 +144,9 @@ new Vue({
         this.editingShop = false
         good.removeChecked = false
       }
-      this.toLeftEle = this.$refs[`goods-${shopIndex}-${goodIndex}`]
-      this.toLeft(this.toLeftEle, left,300)
+      this.toLeft(this.$refs[`goods-${shopIndex}-${goodIndex}`], left, 300)
     },
-    toLeft(dom, left,duration) {
+    toLeft(dom, left, duration) {
       Velocity(dom, {left}, {duration})
 
     }

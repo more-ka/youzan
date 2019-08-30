@@ -54,6 +54,7 @@
                 <li class="block-item block-item-cart"
                     :class="{editing:shop.editing}"
                     :ref="'goods-'+shopIndex+'-'+goodIndex"
+                    :key="good.id"
                     @touchstart="touchStart($event,good)"
                     @touchend="touchEnd($event,shopIndex,good,goodIndex)"
                     v-for="(good,goodIndex) in shop.goodsList">

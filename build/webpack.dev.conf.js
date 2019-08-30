@@ -82,12 +82,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       inject: true,
       chunks: ['goods']
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'user.html',
-    //   template: './src/pages/user/user.html',
-    //   inject: true,
-    //   chunks: ['user']
-    // }),
+    new HtmlWebpackPlugin({
+      filename: 'member.html',
+      template: './src/pages/member/member.html',
+      inject: true,
+      chunks: ['member']
+    }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {

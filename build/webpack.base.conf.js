@@ -18,8 +18,7 @@ module.exports = {
     category: './src/pages/category/category.js',
     search: './src/pages/search/search.js',
     goods: './src/pages/goods/goods.js',
-
-    // user: './src/pages/user/user.js'
+    user: './src/pages/member/member.js'
   },
   output: {
     path: config.build.assetsRoot,

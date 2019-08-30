@@ -34,7 +34,7 @@
       },
       {
         name:'我',
-        href: 'user.html',
+        href: 'member.html',
         icon: 'icon-user'
       }
     ]

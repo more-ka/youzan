@@ -4,11 +4,9 @@ import './cart.css'
 
 import Vue from 'vue'
 import mixin from 'js/mixin.js'
-import axios from 'axios'
-import url from 'js/api.js'
 import Velocity from 'velocity-animate'
-import fetch from 'js/fetch.js'
-import cartService from 'js/cartService.js'
+// 所有请求封装在service.js内
+import service from 'js/service.js'
 
 new Vue({
   el: '.container',
@@ -27,24 +25,20 @@ new Vue({
   },
   methods: {
     getCartList() {
-      axios.get(url.cartList)
-        .then(response => {
-          let list = response.data.cartList
-          list.forEach(shop => {
-            shop.checked = true
-            shop.removeChecked = false
-            shop.editing = false
-            shop.editingMsg = '编辑'
-            shop.goodsList.forEach(good => {
-              good.checked = true
-              good.removeChecked = false
-            })
+      service.getCartList().then(response => {
+        let list = response.data.cartList
+        list.forEach(shop => {
+          shop.checked = true
+          shop.removeChecked = false
+          shop.editing = false
+          shop.editingMsg = '编辑'
+          shop.goodsList.forEach(good => {
+            good.checked = true
+            good.removeChecked = false
           })
-          this.cartList = list
         })
-        .catch(error => {
-          console.log(error);
-        })
+        this.cartList = list
+      })
     },
     selectGood(shop, good) {
       let attr = this.editingShop ? 'removeChecked' : 'checked'
@@ -77,55 +71,33 @@ new Vue({
       this.editingShopIndex = shop.editing ? shopIndex : -1
     },
     add(good) {
-      // fetch('post',url.cartAdd, {
-      //   id: good.id,
-      //   number: 1
-      // })
-      //   .then(response => {
-      //     good.number += 1
-      //   })
-      //   .catch(error => {
-      //     console.log(error);
-      //   })
-      cartService.add('post',good.id).then(response=>{
+      service.add(good.id).then(response => {
         good.number += 1
       })
     },
     reduce(good) {
       if (good.number === 1) return
-      axios.post(url.cartReduce, {
-        id: good.id,
-        number: 1
-      }).then(response => {
+      service.reduce(good.id).then(response=>{
         good.number -= 1
-      }).catch(error => {
-        console.log(error);
       })
     },
     remove(good, goodIndex) {
-      console.log('remove');
       this.removeMsg = '确定删除该商品么？'
       this.removePopup = true
       good.removeChecked = true
     },
     removeMore() {
-      console.log('removemore');
       this.removeMsg = `确定删除这${this.ids.length}个商品么？`
       this.flag = true
       this.removePopup = true
     },
     removeConfirm() {
-      console.log('removeconfirm');
-
       this.removePopup = false
       this.removeList()
     },
     removeList() {
-      console.log('removelist');
       let ids = this.ids
-      axios.post(url.cartRemove, {
-        ids
-      }).then(response => {
+      service.removeList(ids).then(response=>{
         for (let i = 0; i < this.ids.length; i++) {
           this.cartList.forEach((shop, shopIndex) => {
             let template = shop
@@ -148,10 +120,8 @@ new Vue({
             }
           })
         }
-      }).catch(error => {
-        console.log(error);
       })
-      this.toLeft(this.toLeftEle,0)
+      this.toLeft(this.toLeftEle, 0,0)
     },
     removeShop() {
       this.editingShop = null
@@ -179,10 +149,10 @@ new Vue({
         good.removeChecked = false
       }
       this.toLeftEle = this.$refs[`goods-${shopIndex}-${goodIndex}`]
-      this.toLeft(this.toLeftEle,left)
+      this.toLeft(this.toLeftEle, left,300)
     },
-    toLeft(dom,left){
-      Velocity(dom, {left})
+    toLeft(dom, left,duration) {
+      Velocity(dom, {left}, {duration})
 
     }
   },

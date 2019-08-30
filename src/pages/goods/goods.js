@@ -8,10 +8,8 @@ import "./goods_sku.css"
 import Vue from 'vue'
 import mixin from 'js/mixin.js'
 import qs from 'qs'
-import axios from 'axios'
-import url from 'js/api.js'
 import swipe from 'components/Swipe'
-
+import service from 'js/service.js'
 let {id} = qs.parse(location.search.substr(1))
 new Vue({
   el: '#app',
@@ -30,17 +28,16 @@ new Vue({
   },
   methods: {
     getDetails() {
-      axios.get(url.details)
-        .then(response => {
-          this.details = response.data.data
-          this.bannerList = []
-          this.details.imgs.forEach(item => {
-            this.bannerList.push({
-              clickUrl: '',
-              img: item
-            })
+      service.getDetails().then(response=>{
+        this.details = response.data.data
+        this.bannerList = []
+        this.details.imgs.forEach(item => {
+          this.bannerList.push({
+            clickUrl: '',
+            img: item
           })
         })
+      })
     },
     changeTab(index) {
       this.tabIndex = index
@@ -49,10 +46,9 @@ new Vue({
       }
     },
     getDeal() {
-      axios.get(url.deal)
-        .then(response => {
-          this.deals = response.data.data.lists
-        })
+      service.getDeal().then(response=>{
+        this.deals = response.data.data.lists
+      })
     },
     skuShow(type) {
       this.sku = type
@@ -66,10 +62,7 @@ new Vue({
       this.skuNum += num
     },
     addCart() {
-      axios.post(url.addCart, {
-        id,
-        number: this.skuNum
-      }).then(response => {
+      service.addCart({id,number: this.skuNum}).then(response => {
         if (response.data.status === 200) {
           this.isAddCart = true
           this.skuPop = false
@@ -79,7 +72,6 @@ new Vue({
           this.addCartMsg = false
         }, 1500)
       })
-        .catch()
     }
   },
   created() {

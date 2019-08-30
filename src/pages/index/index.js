@@ -1,12 +1,10 @@
 import 'css/common.css'
 import './index.css'
 import Vue from  'vue'
-import axios from 'axios'
-import url from 'js/api.js'
 import { InfiniteScroll } from 'mint-ui'
 import Foot from 'components/Foot.vue'
 import Swipe from 'components/Swipe'
-
+import service from 'js/service.js'
 Vue.use(InfiniteScroll);
 let app = new Vue({
   el: '#app',
@@ -22,7 +20,7 @@ let app = new Vue({
     getData(){
       if(this.allLoading) return
       this.isLoading = true
-      axios.get(url.homepage)
+      service.getHomePage()
         .then(response=>{
           if(response.data.lists.length<this.pageSize){
             this.allLoading = true
@@ -33,19 +31,13 @@ let app = new Vue({
             this.lists = response.data.lists
           }
         })
-        .catch(error=>{
-          console.log(error);
-        })
       this.pageNum += 1
       this.isLoading = false
     },
     getBanner(){
-      axios.get(url.banner)
+      service.getBanner()
         .then(response=>{
           this.bannerList = response.data.lists
-        })
-        .catch(error=>{
-          console.log(errror);
         })
     }
   },

@@ -22,7 +22,8 @@ new Vue({
     removeMsg: '',
     ids: null,
     clear: false,
-    flag: false
+    flag: false,
+    toLeftEle: ''
   },
   methods: {
     getCartList() {
@@ -102,20 +103,25 @@ new Vue({
       })
     },
     remove(good, goodIndex) {
+      console.log('remove');
       this.removeMsg = '确定删除该商品么？'
       this.removePopup = true
       good.removeChecked = true
     },
     removeMore() {
+      console.log('removemore');
       this.removeMsg = `确定删除这${this.ids.length}个商品么？`
       this.flag = true
       this.removePopup = true
     },
     removeConfirm() {
+      console.log('removeconfirm');
+
       this.removePopup = false
       this.removeList()
     },
     removeList() {
+      console.log('removelist');
       let ids = this.ids
       axios.post(url.cartRemove, {
         ids
@@ -126,6 +132,9 @@ new Vue({
             shop.goodsList.forEach((good, index) => {
               if (this.ids[i] === good.id) {
                 shop.goodsList.splice(index, 1)
+                good.startX = '0px'
+                good.endX = '0px'
+
               }
               if (!shop.goodsList.length) {
                 this.cartList.splice(shopIndex, 1)
@@ -142,6 +151,7 @@ new Vue({
       }).catch(error => {
         console.log(error);
       })
+      this.toLeft(this.toLeftEle,0)
     },
     removeShop() {
       this.editingShop = null
@@ -156,14 +166,24 @@ new Vue({
     },
     touchEnd(e, shopIndex, good, goodIndex) {
       let endX = e.changedTouches[0].clientX
+      good.endX = endX
       let left = '0'
       if (good.startX - endX > 100) {
         left = '-60px'
+        this.editingShop = true
+        good.removeChecked = true
       }
       if (endX - good.startX > 100) {
         left = '0px'
+        this.editingShop = false
+        good.removeChecked = false
       }
-      Velocity(this.$refs[`goods-${shopIndex}-${goodIndex}`], {left})
+      this.toLeftEle = this.$refs[`goods-${shopIndex}-${goodIndex}`]
+      this.toLeft(this.toLeftEle,left)
+    },
+    toLeft(dom,left){
+      Velocity(dom, {left})
+
     }
   },
   computed: {

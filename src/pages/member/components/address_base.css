@@ -674,9 +674,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-color: #fff
 }
 
-.block-list>.block-item {
-  padding: 10px 10px 10px 0
-}
+/*.block-list>.block-item {*/
+  /*padding: 10px 10px 10px 0*/
+/*}*/
 
 .block.block-list+.block.block-list {
   margin-top: 12px

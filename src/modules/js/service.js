@@ -54,5 +54,39 @@ class Service{
       ids
     })
   }
+  // address
+  static addressList(){
+    return fetch('get',url.addressList)
+  }
+  static addressAdd(data){
+    return fetch('post',url.addressAdd,data)
+  }
+  static addressRemove(id){
+    return fetch('post',url.addressRemove,id)
+  }
+  static addressUpdate(date){
+    return fetch('post',url.addressUpdate,date)
+  }
+  static addressSetDef(id){
+    return fetch('post',url.addressSetDefault,id)
+  }
 }
 export default Service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

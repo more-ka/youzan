@@ -4,14 +4,15 @@
       <a class="block-item js-address-item address-item "
          v-for="list in lists"
          :key="list.id"
-         @click="toEdit">
+         :class="{'address-item-default':list.isDefault}"
+         @click="toEdit(list)">
         <div class="address-title">{{list.name}} {{list.tel}}</div>
         <p>{{list.provinceName}}{{list.cityName}}市{{list.districtName}}{{list.address}}</p>
         <a class="address-edit">修改</a>
       </a>
     </div>
     <div class="block stick-bottom-row center">
-      <router-link class="btn btn-blue js-no-webview-block js-add-address-btn" to="/address/from">
+      <router-link class="btn btn-blue js-no-webview-block js-add-address-btn" :to="{name:'from',query:{type:'add'}}">
         新增地址
       </router-link>
     </div>
@@ -32,8 +33,14 @@
       })
     },
     methods: {
-      toEdit(){
-        this.$router.push({path: '/address/from'})
+      toEdit(list){
+        this.$router.push({
+          name: 'from',
+          query: {
+            type: 'edit',
+            instance: list
+          }
+        })
       }
     }
   }

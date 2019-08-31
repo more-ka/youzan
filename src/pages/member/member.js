@@ -15,9 +15,11 @@ let routes = [{
     path: '',
     redirect: 'all'
   },{
+    name: 'all',
     path: 'all',
     components: require('./components/all.vue')
   },{
+    name: 'from',
     path: 'from',
     components: require('./components/from.vue')
   }]

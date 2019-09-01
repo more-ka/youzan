@@ -64,8 +64,8 @@ class Service{
   static addressRemove(id){
     return fetch('post',url.addressRemove,id)
   }
-  static addressUpdate(date){
-    return fetch('post',url.addressUpdate,date)
+  static addressUpdate(data){
+    return fetch('post',url.addressUpdate,data)
   }
   static addressSetDef(id){
     return fetch('post',url.addressSetDefault,id)

@@ -6,7 +6,8 @@ import service from 'js/service.js'
 //实例化
 const store = new Vuex.Store({
   state: {
-    lists: null
+    lists: null,
+    addressData: require('js/address.json')
   },
   // 对数据同步管理
   mutations:{
@@ -50,9 +51,9 @@ const store = new Vuex.Store({
         commit('init',response.data.lists)
       })
     },
-    addAction({commit},instance){
+    addAction({state,commit},instance){
       service.addressAdd().then(response=>{
-        commit('add',instance)
+        commit('add',updateAddress(state,instance))
       })
     },
     removeAction({commit},id){
@@ -60,9 +61,9 @@ const store = new Vuex.Store({
         commit('remove',id)
       })
     },
-    updateAction({commit},instance){
+    updateAction({state,commit},instance){
       service.addressUpdate().then(response=>{
-        commit('update',instance)
+        commit('update',updateAddress(state,instance))
       })
     },
     setDefAction({commit},id){
@@ -72,4 +73,24 @@ const store = new Vuex.Store({
     }
   }
 })
+function updateAddress(state,instance){
+  let {provinceValue,cityValue,districtValue} = instance
+  let lists = state.addressData.list
+  let provinceIndex = lists.findIndex(item=>{
+    return item.value === provinceValue
+  })
+  instance.provinceName = lists[provinceIndex].label
+  lists = lists[provinceIndex].children
+
+  let cityIndex = lists.findIndex(item=>{
+    return item.value === cityValue
+  })
+  instance.cityName = lists[cityIndex].label
+  lists = lists[cityIndex].children
+  let districtIndex = lists.findIndex(item=>{
+    return item.value === districtValue
+  })
+  instance.districtName = lists[districtIndex].label
+  return instance
+}
 export default store

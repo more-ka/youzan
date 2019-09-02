@@ -1,4 +1,5 @@
 import service from 'js/service.js'
+
 export default {
   data() {
     return {
@@ -16,8 +17,8 @@ export default {
       districtData: null
     }
   },
-  created(){
-    if(this.type==='edit'){
+  created() {
+    if (this.type === 'edit') {
       let ad = this.instance
       this.name = ad.name
       this.tel = ad.tel
@@ -27,46 +28,76 @@ export default {
     }
   },
   computed: {
-    lists(){
+    lists() {
       return this.$store.state.lists
     }
   },
   methods: {
     add() {
-      let { name, tel, provinceValue, cityValue, districtValue, address} = this
-      let data = { name, tel, provinceValue, cityValue, districtValue, address}
-      if(this.type === 'add'){
+      let {name, tel, provinceValue, cityValue, districtValue, address} = this
+      // if (name.length === 0) {
+      //   alert("姓名为空!")
+      //   return
+      // }
+      // if (tel.length === 0) {
+      //   alert("联系方式为空!")
+      //   return
+      // }
+      // if (provinceValue && cityValue && districtValue === -1) {
+      //   alert("请选择地区!")
+      //   return
+      // }
+      // if (address.length === 0) {
+      //   alert("详细地址未填写!")
+      //   return
+      // }
+      // if (name.length != 0) {
+      //   let reg=/^[\u0391-\uFFE5]+$/;
+      //   if (!reg.test(name)) {
+      //     alert("姓名填写错误,必须是汉字!")
+      //     return
+      //   }
+      // }
+      // if (tel.length != 0) {
+      //   let reg = /^\d{11}$/;
+      //   if (!reg.test(tel)) {
+      //     alert("联系方式格式错误!")
+      //     return
+      //   }
+      // }
+      let data = {name, tel, provinceValue, cityValue, districtValue, address}
+      if (this.type === 'add') {
         // service.addressAdd(data).then(response=>{
         //   this.$router.go(-1)
         // })
-        this.$store.dispatch('addAction',data)
+        this.$store.dispatch('addAction', data)
       }
-      if(this.type === 'edit'){
+      if (this.type === 'edit') {
         data.id = this.id
         // service.addressUpdate(data).then(response=>{
         //   this.$router.go(-1)
         // })
-        this.$store.dispatch('updateAction',data)
+        this.$store.dispatch('updateAction', data)
       }
     },
     remove() {
-      if(window.confirm('确认删除?')){
+      if (window.confirm('确认删除?')) {
         // service.addressRemove(this.id).then(response=>{
         //   this.$router.go(-1)
         // })
-        this.$store.dispatch('removeAction',this.id)
+        this.$store.dispatch('removeAction', this.id)
       }
     },
     setDefault() {
       // service.addressSetDef(this.id).then(response=>{
       //   this.$router.go(-1)
       // })
-      this.$store.dispatch('setDefAction',this.id)
+      this.$store.dispatch('setDefAction', this.id)
     }
   },
   watch: {
     lists: {
-      handler(){
+      handler() {
         this.$router.go(-1)
       },
       deep: true

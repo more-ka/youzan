@@ -5,11 +5,11 @@
         <input class="js-id" name="id" type="hidden" value="">
         <div class="block-item" style="border-top:0;">
           <label>收货人</label>
-          <input type="text" placeholder="请输入姓名" name="user_name" v-model.trim="name" maxlength="20">
+          <input type="text" placeholder="请输入姓名" name="user_name" v-model="name" maxlength="20">
         </div>
         <div class="block-item">
           <label>联系电话</label>
-          <input type="tel" placeholder="联系电话" name="tel" v-model.trim="tel" maxlength="11">
+          <input type="tel" placeholder="联系电话" name="tel" v-model="tel" maxlength="11">
         </div>
         <div class="block-item">
           <label>选择地区</label>
@@ -30,7 +30,7 @@
         </div>
         <div class="block-item">
           <label>详细地址</label>
-          <input type="text" placeholder="街道门牌信息" name="address_detail" v-model.trim="address" maxlength="100">
+          <input type="text" placeholder="街道门牌信息" name="address_detail" v-model="address" maxlength="100">
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ class Service{
     return fetch('get',url.deal)
   }
   static addCart(data){
-    return fetch('post',url.addCart,data)
+    return fetch('post',url.cartAdd,data)
   }
   // cart
   static getCartList(){

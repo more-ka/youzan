@@ -413,15 +413,16 @@ only screen and (min-device-pixel-ratio:1.5) {
   }
 }
 
-.custom-search form {
+.custom-search .form {
   margin: 0;
   position: relative;
   background: #fff;
   overflow: hidden;
-  box-sizing: border-box
+  box-sizing: border-box;
+  display: block;
 }
 
-.custom-search form:before {
+.custom-search .form:before {
   z-index: 1;
   border-radius: 8px;
   content: "";
@@ -439,11 +440,11 @@ only screen and (min-device-pixel-ratio:1.5) {
   border: 1px solid #e5e5e5
 }
 
-.custom-search form::-webkit-input-placeholder {
+.custom-search .form::-webkit-input-placeholder {
   color: #d7d7d7
 }
 
-.custom-search form .custom-search-input {
+.custom-search .form .custom-search-input {
   margin: 0;
   padding: 0 10px 0 40px;
   -webkit-appearance: none;
@@ -472,7 +473,7 @@ only screen and (min-device-pixel-ratio:1.5) {
   clear: both
 }
 
-.custom-search.focus form {
+.custom-search.focus .form {
   float: left;
   width: 88%;
   margin-right: 8px
@@ -1008,7 +1009,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 .hot-title .icon-right {
   color: #fc5959;
   font-size: 12px;
-  padding-left: 50px
+  padding-left: 50px;
 }
 
 .hot-title .icon-right:after {
@@ -1290,3 +1291,7 @@ only screen and (min-device-pixel-ratio:1.5) {
     transform: rotate(1turn)
   }
 }
+.hot-wrap{
+  height: 1240px;
+}
+

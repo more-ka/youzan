@@ -34,8 +34,18 @@ let app = new Vue({
         })
       }
     },
-    toSearch(list){
-      location.href = `search.html?keyword=${list.name}&id=${list.id}`
+    toSearch(name){
+      if(name){
+        location.href = `search.html?keyword=${name}`
+      }
+    },
+    search(){
+      let result = this.$refs.input.value
+      console.log(result);
+      this.toSearch(result);
+    },
+    onSubmit(){
+      return false
     }
   },
   beforeMount(){

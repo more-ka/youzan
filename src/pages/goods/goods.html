@@ -39,6 +39,20 @@
       opacity: 0;
     }
 
+    .loading {
+      width: 100%;
+      height: calc(100vh - 50px);
+      background: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .loading .loading-img img{
+      /*background: url("../loading.gif") 0 0 no-repeat;*/
+      width: 48px;
+      height: 48px;
+      margin-top: 40vh;
+    }
   </style>
   <title>商品详情</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -47,7 +61,11 @@
 <body class=" body-fixed-bottom
             default-theme">
 <div id="app" v-cloak>
-  <div class="container wap-goods internal-purchase" style="min-height: 617px;">
+  <div class="loading" v-if="!details">
+    <span class="loading-img">
+    </span>
+  </div>
+  <div v-else class="container wap-goods internal-purchase" style="min-height: 617px;">
     <div class="content no-sidebar">
       <div class="content-body">
 
@@ -97,7 +115,7 @@
         <div class="js-store-info">
           <div class="block block-list goods-store">
             <div class="custom-store block-item ">
-              <a class="custom-store-link clearfix" href="https://h5.youzan.com/v2/home/cz0mk59k">
+              <a class="custom-store-link clearfix">
                 <div class="custom-store-img"></div>
                 <div class="custom-store-name">
                   {{details.storeName}}
@@ -147,7 +165,7 @@
         <div class="js-bottom-opts js-footer-auto-ele stick-bottom">
           <div class="stick-bottom-icons">
             <a href="javascript:;" class="js-yz-im icons icons-im ">店主</a>
-            <a href="https://h5.youzan.com/v2/showcase/homepage?kdt_id=16546132"
+            <a href="javascript:;"
                class="js-call-im icons icons-home">店铺</a>
             <a href="javascript:;" class="js-yz-zan icons icons-zan ">收藏</a>
           </div>
@@ -199,7 +217,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/2g06s483u55no" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="342718779" title="【米饭版和牛肉版】小龙坎方便火锅 只要一瓶矿泉水就能吃的地道四川火锅">
                   <div class="photo-block" data-width="0" data-height="0"
                        style="background-color: rgb(255, 255, 255);">
@@ -219,7 +237,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/1y8wz9sm8da8k" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="342676309" title="寻找田野|绍兴黄酒 良宵 2012年古法手工原浆半干黄酒 礼盒装 送礼佳品">
                   <div class="photo-block" data-width="750" data-height="750"
                        style="background-color: rgb(255, 255, 255);">
@@ -239,7 +257,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/27082kgcgmrqs" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="342108270" title="寻找田野|新疆库车小白杏 400g*4盒  长在树上的白色蜂蜜">
                   <div class="photo-block" data-width="800" data-height="800"
                        style="background-color: rgb(255, 255, 255);">
@@ -259,7 +277,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/2fnugsg7z7xo4" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="341654863" title="寻找田野|无锡阳山水蜜桃 可以吸着吃的水蜜桃 单果200g礼盒装顺丰直达">
                   <div class="photo-block" data-width="800" data-height="800"
                        style="background-color: rgb(255, 255, 255);">
@@ -279,7 +297,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/2ocrgu7fw6dic" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="340716475" title="认养一头牛 安全无添加的好牛奶/酸奶">
                   <div class="photo-block" data-width="0" data-height="0"
                        style="background-color: rgb(255, 255, 255);">
@@ -299,7 +317,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/365anhqcodi84" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="339552343" title="新西兰进口佳沛绿奇异果  多规格包邮 单果90g--110g">
                   <div class="photo-block" data-width="0" data-height="0"
                        style="background-color: rgb(255, 255, 255);">
@@ -319,7 +337,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/3f2rgi8pm8xgk" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="339441682" title="四杰克系列葡萄酒 五星酒庄出品 750ML">
                   <div class="photo-block" data-width="800" data-height="800"
                        style="background-color: rgb(255, 255, 255);">
@@ -339,7 +357,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/273xg8phauxvo" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="339414742" title="寻找田野|墨西哥进口牛油果 单果140g--180g  6个装 包邮">
                   <div class="photo-block" data-width="1080" data-height="1080"
                        style="background-color: rgb(255, 255, 255);">
@@ -359,7 +377,7 @@
                 </a>
               </li>
               <li class="js-goods-card goods-card small-pic card ">
-                <a href="https://h5.youzan.com/v2/goods/36a5xxtuihz10" class="js-goods link clearfix" target="_blank"
+                <a href="javascript:;" class="js-goods link clearfix" target="_blank"
                    data-goods-id="338917983" title="花园系列葡萄酒 五星酒庄出品 750ML">
                   <div class="photo-block" data-width="800" data-height="800"
                        style="background-color: rgb(255, 255, 255);">

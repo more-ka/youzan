@@ -84,6 +84,6 @@
 </template>
 
 <style scoped>
-  @import './member.css';
-  @import './member_base.css';
+  @import url('./member.css');
+  @import url('./member_base.css');
 </style>

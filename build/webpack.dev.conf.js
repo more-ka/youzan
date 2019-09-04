@@ -6,7 +6,7 @@ const merge = require('webpack-merge')
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
@@ -52,51 +52,51 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './src/pages/index/index.html',
-      inject: true,
-      chunks: ['app']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'cart.html',
-      template: './src/pages/cart/cart.html',
-      inject: true,
-      chunks: ['cart']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'category.html',
-      template: './src/pages/category/category.html',
-      inject: true,
-      chunks: ['category']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'search.html',
-      template: './src/pages/search/search.html',
-      inject: true,
-      chunks: ['search']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'goods.html',
-      template: './src/pages/goods/goods.html',
-      inject: true,
-      chunks: ['goods']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'member.html',
-      template: './src/pages/member/member.html',
-      inject: true,
-      chunks: ['member']
-    }),
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.dev.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
-  ]
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   template: './src/pages/index/index.html',
+    //   inject: true,
+    //   chunks: ['app']
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'cart.html',
+    //   template: './src/pages/cart/cart.html',
+    //   inject: true,
+    //   chunks: ['cart']
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'category.html',
+    //   template: './src/pages/category/category.html',
+    //   inject: true,
+    //   chunks: ['category']
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'search.html',
+    //   template: './src/pages/search/search.html',
+    //   inject: true,
+    //   chunks: ['search']
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'goods.html',
+    //   template: './src/pages/goods/goods.html',
+    //   inject: true,
+    //   chunks: ['goods']
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'member.html',
+    //   template: './src/pages/member/member.html',
+    //   inject: true,
+    //   chunks: ['member']
+    // }),
+    // // copy custom static assets
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, '../static'),
+    //     to: config.dev.assetsSubDirectory,
+    //     ignore: ['.*']
+    //   }
+    // ])
+  ].concat(utils.htmlPlugin())
 })
 
 module.exports = new Promise((resolve, reject) => {

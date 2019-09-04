@@ -5,21 +5,21 @@ Vue.use(Router)
 // 创建vue实例
 let routes = [{
   path: '/',
-  components: require('../components/member.vue')
+  components: require('../component/member.vue')
 },{
   path: '/address',
-  components: require('../components/address.vue'),
+  components: require('../component/address.vue'),
   children: [{
     path: '',
     redirect: 'all'
   },{
     name: 'all',
     path: 'all',
-    components: require('../components/all.vue')
+    components: require('../component/all.vue')
   },{
     name: 'from',
     path: 'from',
-    components: require('../components/from.vue')
+    components: require('../component/from.vue')
   }]
 }]
 let router = new Router({

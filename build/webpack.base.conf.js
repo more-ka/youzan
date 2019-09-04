@@ -12,14 +12,15 @@ function resolve (dir) {
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    app: './src/pages/index/index.js',
-    cart: './src/pages/cart/cart.js',
-    category: './src/pages/category/category.js',
-    search: './src/pages/search/search.js',
-    goods: './src/pages/goods/goods.js',
-    member: './src/pages/member/member.js'
-  },
+  // entry: {
+  //   app: './src/pages/index/index.js',
+  //   cart: './src/pages/cart/cart.js',
+  //   category: './src/pages/category/category.js',
+  //   search: './src/pages/search/search.js',
+  //   goods: './src/pages/goods/goods.js',
+  //   member: './src/pages/member/member.js'
+  // },
+  entry: utils.entries(),
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

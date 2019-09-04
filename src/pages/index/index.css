@@ -1,3 +1,19 @@
+.loading {
+  width: 100%;
+  height: calc(100vh - 50px);
+  background: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.loading .loading-img {
+  background: url("../loading.gif") 0 0 no-repeat;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  margin-top: 40vh;
+}
+
 .wakeup-app {
   position: fixed;
   top: -60px;
@@ -163,9 +179,7 @@ img {
   overflow: hidden
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio:1.5),
-only screen and (min--moz-device-pixel-ratio:1.5),
-only screen and (min-device-pixel-ratio:1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .block-item {
     border-top-width: 1px
   }
@@ -245,7 +259,7 @@ only screen and (min-device-pixel-ratio:1.5) {
   transition-timing-function: ease
 }
 
-.swiper-free-mode>.swiper-wrapper {
+.swiper-free-mode > .swiper-wrapper {
   transition-timing-function: ease-out;
   margin: 0 auto
 }
@@ -284,9 +298,7 @@ only screen and (min-device-pixel-ratio:1.5) {
   cursor: pointer
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio:1.5),
-only screen and (min--moz-device-pixel-ratio:1.5),
-only screen and (min-device-pixel-ratio:1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .swiper-pagination-switch {
     background-image: url(/v2/image/pagination@2x.png);
     background-position: 0 0;
@@ -298,9 +310,7 @@ only screen and (min-device-pixel-ratio:1.5) {
   background-position: -1px -8px
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio:1.5),
-only screen and (min--moz-device-pixel-ratio:1.5),
-only screen and (min-device-pixel-ratio:1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .swiper-active-switch {
     background-image: url(/v2/image/pagination@2x.png);
     background-position: 0 -5px;
@@ -644,9 +654,7 @@ only screen and (min-device-pixel-ratio:1.5) {
   background-size: 16px 16px
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio:1.5),
-only screen and (min--moz-device-pixel-ratio:1.5),
-only screen and (min-device-pixel-ratio:1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .list-finished span,
   .loading-more span {
     background-image: url(https://b.yzcdn.cn/v2/image/loader@2x.gif)

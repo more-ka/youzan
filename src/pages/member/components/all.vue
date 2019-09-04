@@ -7,7 +7,7 @@
          :class="{'address-item-default':list.isDefault}"
          @click="toEdit(list)">
         <div class="address-title">{{list.name}} {{list.tel}}</div>
-        <p>{{list.provinceName}}{{list.cityName}}{{list.districtName}}{{list.address}}</p>
+        <p>{{list.provinceName}}{{list.cityName}}{{list.districtName}} {{list.address}}</p>
         <a class="address-edit">修改</a>
       </a>
     </div>
@@ -21,27 +21,28 @@
 
 <script>
   import service from 'js/service.js'
+
   export default {
     // data(){
     //   return {
     //     lists: null
     //   }
     // },
-    created(){
+    created() {
       // service.addressList().then(response=>{
       //   this.lists = response.data.lists
       // })
-      if(!this.lists){
+      if (!this.lists) {
         this.$store.dispatch('getAddressList')
       }
     },
     computed: {
-      lists(){
+      lists() {
         return this.$store.state.lists
       }
     },
     methods: {
-      toEdit(list){
+      toEdit(list) {
         this.$router.push({
           name: 'from',
           query: {
@@ -54,5 +55,4 @@
   }
 </script>
 <style scoped>
-
 </style>

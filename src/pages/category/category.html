@@ -28,7 +28,10 @@
 
 <body class=" " style="">
 <div id="app" v-cloak>
-  <div class="container with-bottom-nav" style="min-height: 667px;  height:calc(100vh - 50px)">
+  <div class="loading" v-if="!topList">
+    <span class="loading-img"></span>
+  </div>
+  <div v-else class="container with-bottom-nav" style="min-height: 667px;  height:calc(100vh - 50px)">
     <div class="custom-search js-search-bar"  v-if="topList">
       <form>
         <input type="search" class="custom-search-input" autocomplete="off" name="keyword" value="" placeholder="搜索更赞的商品">

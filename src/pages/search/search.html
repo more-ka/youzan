@@ -19,63 +19,72 @@
   <link rel="shortcut icon" href="https://b.yzcdn.cn/v2/image/yz_fc.ico">
   <title>列表</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <!--<link rel="stylesheet" href="./css/common.css">-->
-  <!--<link rel="stylesheet" href="./css/search.css">-->
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
 </head>
 
 <body style="min-height: 667px;">
 <div>
-  <div class="container with-top-search" style="min-height: 667px;" v-cloak @touchmove="move">
-    <div class="custom-search js-search-bar">
-      <form>
-        <input type="search" class="custom-search-input" autocomplete="off" name="keyword" :value="keyword"
-               placeholder="搜索更赞的商品" style="padding-left: 66px;">
-        <span class="icon-custom-search"></span>
-      </form>
-      <button class="custom-search-type-selection-btn custom-search-type-selection-btn-focus">商品</button>
-      <span class="cancel">取消</span>
-      <div class="search-type-dropdown-menu" style="display: none;">
+
+  <div v-else class="container with-top-search" style="min-height: 667px;" v-cloak @touchmove="move">
+    <div class="loading" v-if="!searchList">
+      <span class="loading-img"></span>
+    </div>
+    <div>
+      <div class="custom-search js-search-bar">
+        <form>
+          <input type="search" class="custom-search-input" autocomplete="off" name="keyword" :value="keyword"
+                 placeholder="搜索更赞的商品" style="padding-left: 66px;">
+          <span class="icon-custom-search"></span>
+        </form>
+        <button class="custom-search-type-selection-btn custom-search-type-selection-btn-focus">商品</button>
+        <span class="cancel">取消</span>
+        <div class="search-type-dropdown-menu" style="display: none;">
         <span class="search-type-dropdown-menu-indicator">
             <i></i>
         </span>
-        <div class="drop-menu-content">
-          <div class="search-type-goods">
-            <i class="icon-goods"></i>
-            <span>商品</span>
-          </div>
-          <div class="search-type-dropdown-menu-divider"></div>
-          <div class="search-type-shop">
-            <i class="icon-shop"></i>
-            <span>店铺</span>
+          <div class="drop-menu-content">
+            <div class="search-type-goods">
+              <i class="icon-goods"></i>
+              <span>商品</span>
+            </div>
+            <div class="search-type-dropdown-menu-divider"></div>
+            <div class="search-type-shop">
+              <i class="icon-shop"></i>
+              <span>店铺</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="search-content" style="display: none;" v-if="searchList"></div>
-    <div class="content" v-if="searchList" v-cloak>
-      <div class="search-wrap js-waterfull-wrap">
-        <ul class="js-list">
-          <li class="goods-item" v-for="list in searchList" v-cloak>
-            <a :href="'goods.html?id='+list.id">
-              <div class="thumb">
-                <img :src="list.img">
-                <i class="sell-out" v-if="list.isOut"></i>
-              </div>
-              <div class="detail">
-                <div class="title">{{list.name}}</div>
-                <div class="meta relative">
-                  <span class="price">{{list.price | formatPrice}}</span>
-                  <span class="ship pull-right" v-if="list.isPostage">包邮</span>
+      <div class="search-content" style="display: none;" v-if="searchList"></div>
+      <div class="content" v-if="searchList" v-cloak>
+        <div class="search-wrap js-waterfull-wrap">
+          <ul class="js-list">
+            <li class="goods-item" v-for="list in searchList" v-cloak>
+              <a :href="'goods.html?id='+list.id">
+                <div class="thumb">
+                  <img :src="list.img">
+                  <i class="sell-out" v-if="list.isOut"></i>
                 </div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <div class="list-finished">已经没有更多了</div>
+                <div class="detail">
+                  <div class="title">{{list.name}}</div>
+                  <div class="meta relative">
+                    <span class="price">{{list.price | formatPrice}}</span>
+                    <span class="ship pull-right" v-if="list.isPostage">包邮</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="list-finished">已经没有更多了</div>
+        </div>
       </div>
+      <div v-show="isshow" @click="toTop" class="go-to-top"
+           style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1)"></div>
     </div>
-    <div v-show="isshow" @click="toTop" class="go-to-top"
-         style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1)"></div>
   </div>
 </div>
 </body>

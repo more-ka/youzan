@@ -1,3 +1,20 @@
+.loading {
+  width: 100%;
+  height: calc(100vh - 50px);
+  background: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.loading .loading-img {
+  background: url("../loading.gif") 0 0 no-repeat;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  margin-top: 40vh;
+}
+
+
 .wakeup-app {
   position: fixed;
   top: -60px;
@@ -758,7 +775,7 @@ html {
   top: 0;
   left: 0;
   background-color: #f4f4f4;
-  z-index: 999
+  z-index: 90
 }
 
 .class-category,

@@ -73,7 +73,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
-      excludeChunks: ['app']
+      // excludeChunks: ['app']
     }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
@@ -88,7 +88,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
-      excludeChunks: ['cart']
+      // excludeChunks: ['cart']
     }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
@@ -103,7 +103,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
-      excludeChunks: ['category']
+      // excludeChunks: ['category']
     }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
@@ -118,7 +118,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
-      excludeChunks: ['search']
+      // excludeChunks: ['search']
     }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
@@ -133,7 +133,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
-      excludeChunks: ['goods']
+      // excludeChunks: ['goods']
     }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
@@ -148,7 +148,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
-      excludeChunks: ['member']
+      // excludeChunks: ['member']
     }),
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),

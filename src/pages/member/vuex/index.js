@@ -67,10 +67,11 @@ const store = new Vuex.Store({
       })
     },
     setDefAction({commit},id){
+      console.log(id);
       service.addressSetDef().then(response=>{
         commit('setDef',id)
       })
-    }
+    },
   }
 })
 function updateAddress(state,instance){

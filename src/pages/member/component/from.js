@@ -99,6 +99,7 @@ export default {
       // service.addressSetDef(this.id).then(response=>{
       //   this.$router.go(-1)
       // })
+      console.log('set');
       this.$store.dispatch('setDefAction', this.id)
     }
   },

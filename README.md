@@ -5,12 +5,19 @@
 [预览链接](https://more-ka.github.io/youzan/dist/index.html)
 
 #### 项目截图
+项目gif
 
 ![项目gif](https://github.com/more-ka/img-folder/blob/master/youzan-img/123_gaitubao_104x184.gif)
 
+主页截图
+
 ![截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FvdoedWKpVb5HQji12yBR3by_xo8.jpg)
 
+分类页截图
+
 ![截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FupSNWRU8CS_NQz4WetxtKX6NbQE.jpg)
+
+购物车截图
 
 ![截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FhedGs17Oilzx96KqOBkXjqbJzHe.jpg)
 

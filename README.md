@@ -5,9 +5,10 @@
 [预览链接](https://more-ka.github.io/youzan/dist/index.html)
 
 #### 项目截图
-[项目gif](https://github.com/more-ka/img-folder/blob/master/youzan-img/123_gaitubao_104x184.gif)
-[截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FnLnDPk66QLat3rqr0rg0ulHExrn.jpg)
-[截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FvdoedWKpVb5HQji12yBR3by_xo8.jpg)
+![项目gif](https://github.com/more-ka/img-folder/blob/master/youzan-img/123_gaitubao_104x184.gif)
+![截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FnLnDPk66QLat3rqr0rg0ulHExrn.jpg)
+![截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FupSNWRU8CS_NQz4WetxtKX6NbQE.jpg)
+![截图](https://github.com/more-ka/img-folder/blob/master/youzan-img/gaitubao_FhedGs17Oilzx96KqOBkXjqbJzHe.jpg)
 项目gif https://s2.ax1x.com/2019/09/08/nGo5nK.gif
 #### 技术栈
 vue + vue-router + vuex + axios + easy-mock +es6

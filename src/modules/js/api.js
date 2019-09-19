@@ -21,8 +21,8 @@ let url = {
 }
 // 开发环境和真实环境的切换
 // let host = ''
-// let host = 'http://rap2api.taobao.org/app/mock/7058'
-let host = 'https://www.easy-mock.com/mock/5d6fc633c71dca09124b401e/youzan'
+let host = 'http://rap2api.taobao.org/app/mock/7058'
+// let host = 'https://www.easy-mock.com/mock/5d6fc633c71dca09124b401e/youzan'
 
 
 for (let key in url) {

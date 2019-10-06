@@ -42,7 +42,7 @@
             <p class="title-info c-black font-size-14">全部订单</p>
           </a>
           <router-link class="block-item link clearfix ico-setting js-login" to="/address" target="_self">
-            <p class="title-info c-black font-size-14">地址管理 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;"><-- 点开来看看</span></p>
+            <p class="title-info c-black font-size-14">地址管理 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;"> &larr; 点开来看看</span></p>
           </router-link>
         </div>
         <div class="block block-list list-vertical">

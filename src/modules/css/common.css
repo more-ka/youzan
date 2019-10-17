@@ -382,7 +382,7 @@ hr.left-10 {
 }
 
 .loading {
-  background-image: url(https://b.yzcdn.cn/v2/image/loader.gif)!important;
+  /* background-image: url(https://b.yzcdn.cn/v2/image/loader.gif)!important; */
   background-repeat: no-repeat!important;
   background-position: 50%!important;
   background-size: 16px 16px

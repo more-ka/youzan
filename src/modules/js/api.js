@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2019-08-11 18:44:19
+ * @LastEditTime: 2020-03-15 20:20:25
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \youzan\src\modules\js\api.js
+ */
 let url = {
   homepage: '/index/hotList',
   banner: '/index/banner',
@@ -21,7 +29,7 @@ let url = {
 }
 // 开发环境和真实环境的切换
 // let host = ''
-let host = 'http://rap2api.taobao.org/app/mock/7058'
+let host = 'http://rap2.taobao.org:38080/app/mock/7058/get'
 // let host = 'https://www.easy-mock.com/mock/5d6fc633c71dca09124b401e/youzan'
 
 for (let key in url) {

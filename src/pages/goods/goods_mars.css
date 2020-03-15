@@ -130,14 +130,17 @@ body {
 
 .stick-bottom {
   position: fixed;
-  left: 0;
-  right: 0;
+  /* left: 0; */
+  /* right: 0; */
   bottom: 0;
   font-size: 12px;
   line-height: 16px;
   height: 50px;
   z-index: 100;
-  background-color: #fff
+  background-color: #fff;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 420px;
 }
 
 .stick-bottom-icons {

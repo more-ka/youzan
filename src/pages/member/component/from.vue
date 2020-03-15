@@ -1,5 +1,13 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-08-30 19:17:16
+ * @LastEditTime: 2020-03-15 23:02:48
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \youzan\src\pages\member\component\from.vue
+ -->
 <template>
-  <div class="container " style="min-height: 597px;">
+  <div class="container " style="max-width: 420px;margin: 0 auto;">
     <div class="section section-first">
       <div class="block form js-form" >
         <input class="js-id" name="id" type="hidden" value="">

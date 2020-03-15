@@ -1,5 +1,13 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-08-31 16:44:33
+ * @LastEditTime: 2020-03-15 23:04:36
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \youzan\src\pages\member\component\all.vue
+ -->
 <template>
-  <div class="container " style="min-height: 597px;" v-if="lists">
+  <div class="container " style="max-width: 420px;margin: 0 auto;" v-if="lists">
     <div class="block-list address-list section section-first js-no-webview-block">
       <a class="block-item js-address-item address-item "
          v-for="list in lists"
@@ -11,7 +19,7 @@
         <a class="address-edit">修改</a>
       </a>
     </div>
-    <div class="block stick-bottom-row center">
+    <div class="block stick-bottom-row center" style="max-width: 420px;margin: 0 auto;">
       <router-link class="btn btn-blue js-no-webview-block js-add-address-btn" :to="{name:'from',query:{type:'add'}}">
         新增地址
       </router-link>

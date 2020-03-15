@@ -1,5 +1,5 @@
 <template>
-  <div class="Foot">
+  <div class="Foot" style="max-width: 420px;margin: 0 auto;">
     <div class="bottom-nav">
       <ul>
         <li :class="{active:(index === currentIndex)}" v-for="(list,index) in navConfig"
@@ -63,6 +63,7 @@
   .bottom-nav {
     position: fixed;
     width: 100%;
+    max-width: 420px;
     height: 50px;
     bottom: 0;
     background-color: #fff;

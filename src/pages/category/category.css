@@ -774,7 +774,7 @@ html {
 .class-nav {
   position: fixed;
   top: 0;
-  left: 0;
+  left: auto;
   background-color: #f4f4f4;
   z-index: 90
 }

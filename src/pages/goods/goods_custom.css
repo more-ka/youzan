@@ -624,7 +624,6 @@
   
   .sc-goods-list.pic .goods-card .info {
     padding-left: 4px;
-    margin-top: 10px
   }
   
   .sc-goods-list.pic .goods-card .info .goods-title {
@@ -663,7 +662,7 @@
   }
   
   .sc-goods-list.pic .goods-card.small-pic .info .goods-title {
-    height: 32px;
+    height: 48px;
     overflow: hidden;
     word-break: break-word
   }
@@ -1719,7 +1718,8 @@
   
   .content-body {
     position: relative;
-    z-index: 10
+    z-index: 10;
+    padding: 0 !important;
   }
   
   .more-wrap {

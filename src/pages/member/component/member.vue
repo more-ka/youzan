@@ -1,5 +1,13 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-08-30 19:17:00
+ * @LastEditTime: 2020-03-15 23:01:24
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \youzan\src\pages\member\component\member.vue
+ -->
 <template>
-  <div class="container " style="min-height: 581px;">
+  <div class="container " style="max-width: 420px;margin: 0 auto;">
     <div class="content">
       <div class="user-infos">
         <div class="pull-left avatar">

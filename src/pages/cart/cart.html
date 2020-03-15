@@ -20,8 +20,8 @@
   </style>
 </head>
 
-<body class=" body-fixed-bottom" style="">
-<div class="container " style="min-height: 581px;" v-cloak>
+<body class=" body-fixed-bottom" style="max-width: 420px;margin: 0 auto;">
+<div class="container " style="max-width: 420px;margin: 0 auto;" v-cloak>
   <div class="loading" v-if="!cartList">
     <span class="loading-img"></span>
   </div>
@@ -53,12 +53,11 @@
               <div>
                 <ul class="js-list block block-list block-list-cart border-0">
                   <li class="block-item block-item-cart"
+                      v-for="(good,goodIndex) in shop.goodsList"
                       :class="{editing:shop.editing}"
-                      :ref="'goods-'+shopIndex+'-'+goodIndex"
                       :key="good.id"
                       @touchstart="touchStart($event,good)"
-                      @touchend="touchEnd($event,shopIndex,good,goodIndex)"
-                      v-for="(good,goodIndex) in shop.goodsList">
+                      @touchend="touchEnd($event,shopIndex,good,goodIndex)">
                     <div>
                       <div class="check-container" @click="selectGood(shop,good)">
                         <span class="check" :class="{'checked':editingShop?good.removeChecked:good.checked}"></span></div>
@@ -68,7 +67,7 @@
                           <!---->
                         </a>
                         <div class="detail">
-                          <a href="'goods.html?id='+good.id" class="js-goods-link"><h3 class="title js-ellipsis">
+                          <a :href="'goods.html?id='+good.id" class="js-goods-link"><h3 class="title js-ellipsis">
                             <i>{{good.title}}</i></h3></a>
                           <p class="sku ellipsis">
                             {{good.sku}}
@@ -104,11 +103,11 @@
 
           </div>
 
-          <div style="padding:0;" class="js-bottom-opts bottom-fix">
-            <div class="go-shop-tip js-go-shop-tip c-orange font-size-12">
+          <div style="max-width: 420px;margin:0 auto;padding:0;" class="js-bottom-opts bottom-fix">
+            <div class="go-shop-tip js-go-shop-tip c-orange font-size-12" style="max-width: 420px;margin: 0 auto;">
               你需要分开结算每个店铺的商品哦~
             </div>
-            <div class="bottom-cart clear-fix">
+            <div class="bottom-cart clear-fix" style="max-width: 420px;margin: 0 auto;">
               <div class="select-all" @click="selectAll">
               <span class="check" :class="{checked:editingShop?allRemoveSelected: allSelected}">
               </span> 全选

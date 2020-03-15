@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-08-12 14:21:53
+ * @LastEditTime: 2020-03-15 23:37:36
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \youzan\src\components\Swipe.vue
+ -->
 <template>
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -39,5 +47,6 @@
   .swiper-slide img {
     width: 100%;
     height: 100%;
+    max-width: 420px;
   }
 </style>

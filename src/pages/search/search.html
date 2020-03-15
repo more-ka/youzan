@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-08-11 17:42:56
+ * @LastEditTime: 2020-03-16 00:23:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \youzan\src\pages\search\search.html
+ -->
 <!DOCTYPE html>
 <html class="no-js " lang="zh-CN">
 
@@ -26,10 +34,10 @@
   </style>
 </head>
 
-<body style="min-height: 667px;">
+<body style="max-width: 420px;margin: 0 auto;">
 <div>
 
-  <div v-else class="container with-top-search" style="min-height: 667px;" v-cloak @touchmove="move">
+  <div v-else class="container with-top-search" style="max-width: 420px !important;margin: 0 auto;" v-cloak @touchmove="move">
     <div class="loading" v-if="!searchList">
       <span class="loading-img"></span>
     </div>

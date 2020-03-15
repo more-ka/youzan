@@ -53,23 +53,26 @@
       height: 48px;
       margin-top: 40vh;
     }
+    .card a div img{
+      margin: 0 !important;
+    }
   </style>
   <title>商品详情</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
 <body class=" body-fixed-bottom
-            default-theme">
+            default-theme" >
 <div id="app" v-cloak>
   <div class="loading" v-if="!details">
     <span class="loading-img">
     </span>
   </div>
-  <div v-else class="container wap-goods internal-purchase" style="min-height: 617px;">
+  <div v-else class="container wap-goods internal-purchase">
     <div class="content no-sidebar">
-      <div class="content-body">
+      <div class="content-body" style="max-width: 420px !important;margin: 0 auto;">
 
-        <Swipe :lists="bannerList" v-if="bannerList"></Swipe>
+        <Swipe :lists="bannerList" v-if="bannerList" style="max-width: 420px;margin: 0 auto;height: 100%;"></Swipe>
 
         <div class="goods-header">
           <h2 class="title">{{details.title}}</h2>
@@ -516,7 +519,7 @@
           </div>
           <!-- 立即购买 -->
           <div class="big-btn-1-1" v-show="sku===3">
-            <a href="javascript:;" class="js-confirm-it big-btn red-btn main-btn">下一步</a>
+            <a class="js-confirm-it big-btn red-btn main-btn" href="http://localhost:8080/cart.html">下一步</a>
           </div>
           <!-- 选择规格 -->
           <div class="big-btn-2-1" v-show="sku===1">

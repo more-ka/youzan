@@ -474,7 +474,9 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .sku-layout {
-  background-color: #f8f8f8
+  background-color: #f8f8f8;
+  max-width: 420px;
+  margin: 0px auto;
 }
 
 .sku-layout .line-through {
